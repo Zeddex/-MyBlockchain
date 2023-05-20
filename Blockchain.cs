@@ -9,11 +9,12 @@ namespace MyBlockchain
     internal class Blockchain
     {
         private List<Block> chain;
+        Data data;
 
         public Blockchain()
         {
             // create genesis block
-            chain = new List<Block> { new (string.Empty) };
+            chain = new List<Block> { new Block(data) };
         }
 
         public Block GetLastBlock()
@@ -24,7 +25,7 @@ namespace MyBlockchain
         public void AddBlock(Block block)
         {
             var lastBlock = GetLastBlock();
-            block.PrevHash = Ext.GetHash(lastBlock.PrevHash, lastBlock.Timestamp, lastBlock.Data);
+            block.PrevHash = Ext.GetHash(lastBlock.PrevHash, lastBlock.Timestamp, data.ToString());
 
             chain.Add(block);
         }

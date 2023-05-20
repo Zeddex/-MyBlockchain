@@ -1,23 +1,49 @@
 ﻿using MyBlockchain;
 
+Data data;
+
 var myBlockchain = new Blockchain();
 
-var genesisBlock = myBlockchain.GetLastBlock();
-Console.WriteLine($"Genesis Block:\n{genesisBlock}");
+Console.WriteLine($"Genesis Block:\n{myBlockchain.GetLastBlock()}");
 
-myBlockchain.AddBlock(new Block("from: Joe, to: Max, amount: 1000"));
+myBlockchain.AddBlock(new Block(new Data()
+{
+    From = "Joe",
+    To = "Max",
+    Amount = 1000
+}));
 Console.WriteLine(myBlockchain.GetLastBlock());
 
-myBlockchain.AddBlock(new Block("from: Sam, to: Bo, amount: 500"));
+myBlockchain.AddBlock(new Block(new Data()
+{
+    From = "Sam",
+    To = "Bo",
+    Amount = 500
+}));
 Console.WriteLine(myBlockchain.GetLastBlock());
 
-myBlockchain.AddBlock(new Block("from: Matt, to: Phil, amount: 3000"));
+myBlockchain.AddBlock(new Block(new Data()
+{
+    From = "Matt",
+    To = "Phil",
+    Amount = 3000
+}));
 Console.WriteLine(myBlockchain.GetLastBlock());
 
-myBlockchain.AddBlock(new Block("from: Adam, to: Martha, amount: 200"));
+myBlockchain.AddBlock(new Block(new Data()
+{
+    From = "Adam",
+    To = "Martha",
+    Amount = 200
+}));
 Console.WriteLine(myBlockchain.GetLastBlock());
 
-myBlockchain.AddBlock(new Block("from: Jenny, to: Sarah, amount: 900"));
+myBlockchain.AddBlock(new Block(new Data()
+{
+    From = "Jenny",
+    To = "Sarah",
+    Amount = 900
+}));
 Console.WriteLine(myBlockchain.GetLastBlock());
 
 Console.ReadLine();
