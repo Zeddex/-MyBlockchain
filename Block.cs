@@ -19,14 +19,21 @@ namespace MyBlockchain
             return $"Block Id: {Id}\nTimestamp: {Timestamp}\nData: {Data}\nHash: {Hash}\nPrevHash: {PrevHash}\n";
         }
 
+        /// <summary>
+        /// Create genesis block
+        /// </summary>
+        public Block()
+        {
+            Id = 1;
+            Timestamp = Ext.GetTimestamp();
+            Hash = Ext.GetHash(Timestamp);
+        }
+
         public Block(Data data)
         {
             Id++;
             Data = data;
             Timestamp = Ext.GetTimestamp();
-            Hash = Ext.GetHash(PrevHash, Timestamp, Data.ToString());
         }
-
-        static Block() { }
     }
 }

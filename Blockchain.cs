@@ -14,7 +14,7 @@ namespace MyBlockchain
         public Blockchain()
         {
             // create genesis block
-            chain = new List<Block> { new Block(data) };
+            chain = new List<Block> { new() };
         }
 
         public Block GetLastBlock()
@@ -22,17 +22,19 @@ namespace MyBlockchain
             return chain[^1];
         }
 
-        public void AddBlock(Block block)
+        public void AddBlock(Block newBlock)
         {
             var lastBlock = GetLastBlock();
-            block.PrevHash = Ext.GetHash(lastBlock.PrevHash, lastBlock.Timestamp, data.ToString());
 
-            chain.Add(block);
+            newBlock.Hash = Ext.GetHash(lastBlock.PrevHash + newBlock.Timestamp + newBlock.Data);
+            newBlock.PrevHash = lastBlock.Hash;
+
+            chain.Add(newBlock);
         }
 
         public bool IsValid()
         {
-            for (int i = 0; i < chain.Count; i++)
+            for (int i = 1; i <= chain.Count; i++)
             {
                 var currentBlock = chain[i];
                 var prevBlock = chain[i - 1];

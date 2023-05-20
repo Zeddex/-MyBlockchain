@@ -8,9 +8,9 @@ namespace MyBlockchain
 {
     internal class Ext
     {
-        public static string GetHash(string prevHash, string timestamp, string data)
+        public static string GetHash(string inputData)
         {
-            var inputBytes = Encoding.UTF8.GetBytes(prevHash + timestamp + data);
+            var inputBytes = Encoding.UTF8.GetBytes(inputData);
             var inputHash = SHA256.HashData(inputBytes);
             return Convert.ToHexString(inputHash);
         }
