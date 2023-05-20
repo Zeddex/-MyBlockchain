@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 
 namespace MyBlockchain
 {
-    internal class Calc
+    internal class Ext
     {
         public static string GetHash(string prevHash, string timestamp, string data)
         {
@@ -17,7 +17,7 @@ namespace MyBlockchain
 
         public static string GetTimestamp()
         {
-            var timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+            var timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds();
 
             return timestamp.ToString();
         }
