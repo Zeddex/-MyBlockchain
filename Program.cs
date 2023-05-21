@@ -38,7 +38,6 @@ Console.WriteLine(myBlockchain.GetLastBlock());
 
 //bool isValid = myBlockchain.IsValid();
 
-//Console.ForegroundColor = ConsoleColor.Blue;
 //Console.WriteLine($"Blockchain is valid: {isValid}");
 
 Console.ReadLine();

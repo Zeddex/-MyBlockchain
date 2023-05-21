@@ -8,11 +8,12 @@ namespace MyBlockchain
 {
     public class Block
     {
-        public static int Id { get; set; }
+        public int Id { get; set; }
         public string Timestamp { get; set; }
         public Data Data { get; set; }
         public string Hash { get; set; }
         public string PrevHash { get; set; }
+        public static int Count { get; set; }
 
         public override string ToString()
         {
@@ -24,14 +25,14 @@ namespace MyBlockchain
         /// </summary>
         public Block()
         {
-            Id = 1;
+            Id = Count = 1;
             Timestamp = Ext.GetTimestamp();
             Hash = Ext.GetHash(Timestamp);
         }
 
         public Block(Data data)
         {
-            Id++;
+            Id = ++Count;
             Data = data;
             Timestamp = Ext.GetTimestamp();
         }
