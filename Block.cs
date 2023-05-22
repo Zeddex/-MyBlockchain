@@ -13,7 +13,7 @@ namespace MyBlockchain
         public Data Data { get; set; }
         public string Hash { get; set; }
         public string PrevHash { get; set; }
-        public static int Count { get; set; }
+        private static int Count { get; set; }
 
         public override string ToString()
         {

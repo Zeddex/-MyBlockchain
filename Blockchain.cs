@@ -39,13 +39,13 @@ namespace MyBlockchain
                 var currentBlock = chain[i];
                 var prevBlock = chain[i - 1];
 
-                if (prevBlock.Hash != currentBlock.Hash || prevBlock.Hash != currentBlock.PrevHash)
+                if (prevBlock.Hash == currentBlock.PrevHash)
                 {
-                    return false;
+                    return true;
                 }
             }
 
-            return true;
+            return false;
         }
     }
 }

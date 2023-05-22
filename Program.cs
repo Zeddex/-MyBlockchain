@@ -36,8 +36,7 @@ myBlockchain.AddBlock(new Block(new Data()
 }));
 Console.WriteLine(myBlockchain.GetLastBlock());
 
-//bool isValid = myBlockchain.IsValid();
+bool isValid = myBlockchain.IsValid();
 
-//Console.WriteLine($"Blockchain is valid: {isValid}");
-
+Console.WriteLine($"Blockchain is valid: {isValid}");
 Console.ReadLine();
