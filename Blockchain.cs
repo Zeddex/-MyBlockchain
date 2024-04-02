@@ -6,20 +6,14 @@ using System.Threading.Tasks;
 
 namespace MyBlockchain
 {
-    internal class Blockchain
+    public class Blockchain
     {
-        private List<Block> chain;
-        Data data;
-
-        public Blockchain()
-        {
-            // create genesis block
-            chain = new List<Block> { new() };
-        }
+        // create genesis block
+        private readonly List<Block> _chain = new() { new() };
 
         public Block GetLastBlock()
         {
-            return chain[^1];
+            return _chain[^1];
         }
 
         public void AddBlock(Block newBlock)
@@ -29,15 +23,15 @@ namespace MyBlockchain
             newBlock.Hash = Ext.GetHash(lastBlock.PrevHash + newBlock.Timestamp + newBlock.Data);
             newBlock.PrevHash = lastBlock.Hash;
 
-            chain.Add(newBlock);
+            _chain.Add(newBlock);
         }
 
         public bool IsValid()
         {
-            for (int i = 1; i <= chain.Count; i++)
+            for (int i = 1; i <= _chain.Count; i++)
             {
-                var currentBlock = chain[i];
-                var prevBlock = chain[i - 1];
+                var currentBlock = _chain[i];
+                var prevBlock = _chain[i - 1];
 
                 if (prevBlock.Hash == currentBlock.PrevHash)
                 {
